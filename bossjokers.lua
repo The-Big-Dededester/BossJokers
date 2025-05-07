@@ -571,7 +571,7 @@ local jokers = {
         soul_pos=nil,
     
         calculate = function(self,context)
-            if context.cardarea == G.jokers and not context.before and not context.after then
+            if context.joker_main then
                 if #G.play.cards <= self.ability.extra.size then
                     return {
                         message = localize{type='variable',key='a_xmult',vars={self.ability.extra.xmult}},
@@ -649,7 +649,7 @@ local jokers = {
         soul_pos=nil,
     
         calculate = function(self,context)
-            if context.cardarea == G.jokers and not context.before and not context.after then
+            if context.joker_main then
                 if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round == 1 then
                     return {
                         message = localize{type='variable',key='a_xmult',vars={self.ability.extra.Xmult}},
@@ -734,7 +734,7 @@ local jokers = {
         end,
     
         calculate = function(self,context)
-            if context.cardarea == G.jokers and not context.before and not context.after then
+            if context.joker_main then
                 self.ability.extra.Xmult = 1 + 0.25*G.hand.config.card_limit
                 return {
                     message = localize{type='variable',key='a_xmult',vars={self.ability.extra.Xmult}},
